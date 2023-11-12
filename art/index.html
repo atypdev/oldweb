@@ -5,22 +5,23 @@
     <title>Anagraphic</title>
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
     <style>
-        .imageContainer {
+        /* Add some basic styling for the image grid */
+        #imageContainer1,
+        #imageContainer2,
+        #imageContainer3 {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             gap: 10px;
         }
 
-        .imageContainer img {
-            width: 100%;
+        img {
+            max-width: 100%;
             height: auto;
-            display: block;
-            margin: 0;
         }
     </style>
 </head>
 
-<body bgcolor="#301700" text="#EBE5E0" link="#EBAF7A" background="images/tile.png" vlink="#80552f">
+<body bgcolor="#301700" text="#EBE5E0" link="#EBAF7A" background="../images/tile.png" vlink="#80552f">
     <div id="wrapper">
         <center>
             <table border="3" width="50%" style="border-collapse: separate" bgcolor="#401612" bordercolor="#211101"
@@ -29,20 +30,30 @@
                     <tr>
                         <td>
                             <a href="../">Go back!</a>
-                            <h2>Arts</h2>
-                            
+                            <h1>Arts</h1>
+                            <h3>Paru - They/Them</h3>
+                            <p>Hey, it's me! I'm a Canine + Poison Dart Frog who loves sharing about plants, mushrooms and moss.</p>
                             <div id="imageContainer1" class="imageContainer"></div>
+                            <h3>Mold - He/Him</h3>
+                            <p>A slice of bread you left out for too long... now he green!!!</p>
                             <div id="imageContainer2" class="imageContainer"></div>
+                            <h3>Tiar - Any</h3>
+                            <p>A rabbit with a long history of martial arts and leg-days (never skipped). Sleeper build!</p>
+                            <div id="imageContainer3" class="imageContainer"></div>
 
                             <script>
                                 const imagePath1 = "../images/arts/paru/";
                                 const imagePath2 = "../images/arts/mold/";
+                                const imagePath3 = "../images/arts/tiar/";
 
                                 // Fetch image files from the first folder
                                 fetchImages(imagePath1, 'imageContainer1');
 
                                 // Fetch image files from the second folder
                                 fetchImages(imagePath2, 'imageContainer2');
+
+                                // Fetch image files from the second folder
+                                fetchImages(imagePath3, 'imageContainer3');
 
                                 function fetchImages(path, containerId) {
                                     fetch(path)
@@ -78,9 +89,30 @@
             </table>
         </center>
         <footer>
-            <a href="http://dorms.thedigitallancabin.net/"><img border="0"
-                    src="http://dorms.thedigitallancabin.net/img/webbanner.gif" width="88" height="31"
-                    alt="Visit The Digital LAN Cabin dorms, a retro webhost"></a>
+            <center>
+                <p>Dorm:</p>
+                <a href="http://dorms.thedigitallancabin.net/"><img border="0"
+                        src="http://dorms.thedigitallancabin.net/img/webbanner.gif" width="88" height="31"
+                        alt="Visit The Digital LAN Cabin dorms, a retro webhost"></a>
+                <p>Homies:</p>
+                <a href="http://dorms.thedigitallancabin.net/~digikitty_x86/"><img
+                        src="http://dorms.thedigitallancabin.net/~digikitty_x86/images/digikitty_x86.gif"
+                        alt="digikitty x86" width="88" height="31"></a>
+                <a href="http://dorms.thedigitallancabin.net/~voltbun/"><img
+                        src="http://dorms.thedigitallancabin.net/~digikitty_x86/images/button/voltbun.gif"
+                        alt="VoltBun's Web Space" width="88" height="31"></a>
+                <a href="http://dorms.thedigitallancabin.net/~sominemo/"><img border="0"
+                        src="http://dorms.thedigitallancabin.net/~sominemo/img/sominemo.gif" width="88" height="31"
+                        alt="Sominemo Now!" title="Visit Sominemo's Homepage"></a>
+                <p>Banner:</p>
+                <a href="http://dorms.thedigitallancabin.net/~anagraph/"><img border="0"
+                        src="http://dorms.thedigitallancabin.net/~anagraph/images/banner.gif" width="88" height="31"
+                        alt="Anagraph Now!" title="Visit Paru's Homepage"></a>
+                <form action="none">
+                    <textarea rows="4" cols="40" readonly="true" wrap="hard"
+                        style="resize: none;">&lt;a href="http://dorms.thedigitallancabin.net/~anagraph/"&gt;&lt;img border="0" src="http://dorms.thedigitallancabin.net/~anagraph/images/banner.gif" width="80" height="15" alt="Sominemo's Homepage" title="Visit Sominemo's Homepage"&gt;&lt;/a&gt;</textarea>
+                </form>
+            </center>
         </footer>
     </div>
 </body>
