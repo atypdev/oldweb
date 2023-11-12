@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Anagraphic</title>
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <style>
+        .imageContainer {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
+            gap: 10px;
+        }
+
+        .imageContainer img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body bgcolor="#301700" text="#EBE5E0" link="#EBAF7A" background="images/tile.png" vlink="#80552f">
+    <div id="wrapper">
+        <center>
+            <table border="3" width="50%" style="border-collapse: separate" bgcolor="#401612" bordercolor="#211101"
+                bordercolordark="#000000" cellpadding="5">
+                <tbody>
+                    <tr>
+                        <td>
+                            <a href="../">Go back!</a>
+                            <h2>Arts</h2>
+                            
+                            <div id="imageContainer1" class="imageContainer"></div>
+                            <div id="imageContainer2" class="imageContainer"></div>
+
+                            <script>
+                                const imagePath1 = "../images/arts/paru/";
+                                const imagePath2 = "../images/arts/mold/";
+
+                                // Fetch image files from the first folder
+                                fetchImages(imagePath1, 'imageContainer1');
+
+                                // Fetch image files from the second folder
+                                fetchImages(imagePath2, 'imageContainer2');
+
+                                function fetchImages(path, containerId) {
+                                    fetch(path)
+                                        .then(response => response.text())
+                                        .then(data => {
+                                            // Extract image file names from the HTML response
+                                            const parser = new DOMParser();
+                                            const doc = parser.parseFromString(data, 'text/html');
+                                            const imageFiles = Array.from(doc.querySelectorAll('a')).map(a => a.href);
+
+                                            // Filter out non-image files (you may need to adjust the filtering logic)
+                                            const imageFilesFiltered = imageFiles.filter(file => file.endsWith('.png') || file.endsWith('.jpg') || file.endsWith('.jpeg') || file.endsWith('.gif'));
+
+                                            // Generate HTML for images
+                                            const imageContainer = document.getElementById(containerId);
+                                            imageFilesFiltered.forEach((file, index) => {
+                                                const imgElement = document.createElement('img');
+                                                imgElement.src = file;
+                                                imgElement.alt = 'Image ' + (index + 1);
+
+                                                const imgContainer = document.createElement('div');
+                                                imgContainer.appendChild(imgElement);
+
+                                                imageContainer.appendChild(imgContainer);
+                                            });
+                                        })
+                                        .catch(error => console.error('Error fetching images from', path, ':', error));
+                                }
+                            </script>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </center>
+        <footer>
+            <a href="http://dorms.thedigitallancabin.net/"><img border="0"
+                    src="http://dorms.thedigitallancabin.net/img/webbanner.gif" width="88" height="31"
+                    alt="Visit The Digital LAN Cabin dorms, a retro webhost"></a>
+        </footer>
+    </div>
+</body>
+
+</html>
